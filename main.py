@@ -7,8 +7,6 @@ import aiohttp
 from aiogram import Bot, Dispatcher, types, F
 from aiogram.filters import Command
 from aiogram.utils.keyboard import InlineKeyboardBuilder
-import nest_asyncio
-nest_asyncio.apply()
 
 
 # --- KONFIGURATSIYA ---
@@ -257,3 +255,4 @@ if __name__ == '__main__':
         asyncio.run(main())
     except (KeyboardInterrupt, SystemExit):
         logging.info("Bot to'xtatildi.")
+
