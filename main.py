@@ -4,6 +4,7 @@ import logging
 import base64
 import json
 import aiohttp
+from aiohttp import web
 from aiogram import Bot, Dispatcher, types, F
 from aiogram.filters import Command
 from aiogram.utils.keyboard import InlineKeyboardBuilder
@@ -246,6 +247,25 @@ async def callback_examples(callback: types.CallbackQuery):
         )
     else:
         await callback.message.answer(f"⚠️ <b>Kechirasiz, ma'lumot topilmadi.</b>", parse_mode='HTML')
+
+async def handle(request):
+    return web.Response(text="Bot is active")
+
+async def main():
+    # Veb-serverni ishga tushirish
+    app = web.Application()
+    app.router.add_get("/", handle)
+    runner = web.AppRunner(app)
+    await runner.setup()
+    
+    # Render beradigan portni olamiz
+    port = int(os.environ.get("PORT", 10000))
+    site = web.TCPSite(runner, '0.0.0.0', port)
+    await site.start()
+    
+    # Botni polling qilishni boshlash
+    await dp.start_polling(bot)
+
 async def main():
     logging.info("Yapon tili AI boti yangi API bilan ishga tushirildi!")
     await dp.start_polling(bot)
@@ -255,4 +275,5 @@ if __name__ == '__main__':
         asyncio.run(main())
     except (KeyboardInterrupt, SystemExit):
         logging.info("Bot to'xtatildi.")
+
 
