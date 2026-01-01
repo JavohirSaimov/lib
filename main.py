@@ -12,9 +12,9 @@ from aiogram.utils.keyboard import InlineKeyboardBuilder
 
 # --- KONFIGURATSIYA ---
 # Yangi API token o'rnatildi
-API_TOKEN = '8455171223:AAHyWiE3It1y8w5MmUZ00fkyWA9PDvdlHKI'
+API_TOKEN = ''
 # Gemini API kalitingiz
-GEMINI_API_KEY = "AIzaSyDCbZmtZn8P12lJcwyrcMT2-0HE4gTv1Qg"
+GEMINI_API_KEY = ""
 
 # Logging sozlamalari
 logging.basicConfig(level=logging.INFO)
@@ -256,3 +256,4 @@ if __name__ == '__main__':
         asyncio.run(main())
     except (KeyboardInterrupt, SystemExit):
         logging.info("Bot to'xtatildi.")
+
